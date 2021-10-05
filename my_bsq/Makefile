@@ -19,12 +19,5 @@ $(TARGET): $(OBJS)
 $(OBJ)/%.o: $(SRC)/%.c 
 	${CC} ${CFLAGS} -c $< -o $@
 
-# dir don't exit
-$(OBJ):
-	mkdir $@
-
-$(BIN):
-	mkdir $@
-
 clean:
 		$(RM) $(TARGET) 
