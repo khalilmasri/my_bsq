@@ -67,6 +67,35 @@ char_map read_map_into_array()
     return map;
 }
 
+//function to replace the '.' with 0 and 'o' with 1 and write to int_map
+int_map convert_to_int_map(char_map map)
+{
+    int_map int_map;
+    int i, j;
+    int_map.size = map.size;
+    int_map.map = malloc(sizeof(int *) * int_map.size);
+    for (i = 0; i < int_map.size + 1; i++)
+    {
+        int_map
+    }
+    for (i = 0; i < int_map.size; i++)
+    {
+        int_map.map[i] = malloc(sizeof(int) * int_map.size);
+        for (j = 0; j < int_map.size; j++)
+        {
+            if (map.map[i][j] == '.')
+            {
+                int_map.map[i][j] = 0;
+            }
+            else
+            {
+                int_map.map[i][j] = 1;
+            }
+        }
+    }
+    return int_map;
+}
+
 //free the memory allocated for the map
 void free_char_map(char_map map)
 {
@@ -87,6 +116,8 @@ void free_int_map(int_map map)
     }
     free(map.map);
 }
+
+
 
 //print the map
 void print_char_map(char_map map)
@@ -115,30 +146,7 @@ void print_int_map(int_map map)
     }
 }
 
-//function to replace the '.' with 0 and 'o' with 1 and write to int_map
-int_map convert_to_int_map(char_map map)
-{
-    int_map int_map;
-    int i, j;
-    int_map.size = map.size;
-    int_map.map = malloc(sizeof(int *) * int_map.size);
-    for (i = 0; i < int_map.size; i++)
-    {
-        int_map.map[i] = malloc(sizeof(int) * int_map.size);
-        for (j = 0; j < int_map.size; j++)
-        {
-            if (map.map[i][j] == '.')
-            {
-                int_map.map[i][j] = 0;
-            }
-            else
-            {
-                int_map.map[i][j] = 1;
-            }
-        }
-    }
-    return int_map;
-}
+
 
 int main()
 {
@@ -147,7 +155,7 @@ int main()
     system("perl map_generator.pl 10 10 2 > map.txt");
 
     //read the map size
-    int size = read_map_size();
+    printf("map size: %d\n", read_map_size());
     //read the map
     char_map char_map = read_map_into_array();
     int_map int_map = convert_to_int_map(char_map);
